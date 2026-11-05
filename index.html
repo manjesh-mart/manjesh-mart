@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#147d45">
+<title>MANJESH MART | Online Grocery Shopping</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f7faf7;color:#222}
+header{background:#147d45;color:white;padding:18px 5%;
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#ff8700}
+header a{color:white;text-decoration:none;font-weight:bold}
+nav{background:white;padding:15px 5%;display:flex;gap:22px;
+overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px #ddd}
+nav a{color:#147d45;text-decoration:none;font-weight:bold}
+.hero{margin:22px auto;background:#e5f4e9;padding:35px 7%;
+border-radius:15px;width:90%;display:flex;align-items:center;
+justify-content:space-between;gap:20px;flex-wrap:wrap}
+.hero h1{font-size:32px;color:#105c35;margin-bottom:12px}
+.hero p{line-height:1.7}
+.hero button{background:#ff8700;color:white;border:0;padding:13px 22px;
+border-radius:8px;margin-top:18px;font-weight:bold}
+section{padding:20px 5%}
+h2{color:#105c35;margin-bottom:18px}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:15px}
+.category,.product{background:white;border-radius:12px;padding:18px 10px;
+text-align:center;box-shadow:0 2px 9px #ddd}
+.category{font-weight:bold}
+.category div{font-size:35px;margin-bottom:8px}
+.product .emoji{font-size:45px}
+.product h3{font-size:15px;margin:10px 0}
+.product p{color:#147d45;font-weight:bold;margin:8px}
+.product button{background:#147d45;color:white;border:0;padding:9px 14px;
+border-radius:6px}
+footer{background:#105c35;color:white;text-align:center;padding:25px;margin-top:30px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">MANJESH <span>MART</span></div>
+<a href="#products">🛒 Shopping</a>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#categories">Categories</a>
+<a href="#products">Products</a>
+<a href="#about">About Us</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+<div>
+<h1>आपकी जरूरत, अब आपके दरवाजे पर!</h1>
+<p>ताजा सब्जियां, राशन और रोजमर्रा का सामान।<br>
+अब ऑनलाइन ऑर्डर करें।</p>
+<button onclick="document.getElementById('products').scrollIntoView()">
+Shop Now →
+</button>
+</div>
+<div style="font-size:75px">🛒🥦</div>
+</div>
+
+<section id="categories">
+<h2>Shop By Category</h2>
+<div class="categories">
+<div class="category"><div>🥦</div>Vegetables</div>
+<div class="category"><div>🍎</div>Fruits</div>
+<div class="category"><div>🥛</div>Dairy</div>
+<div class="category"><div>🌾</div>Grocery</div>
+<div class="category"><div>🥚</div>Eggs</div>
+<div class="category"><div>🥤</div>Drinks</div>
+</div>
+</section>
+
+<section id="products">
+<h2>Popular Products</h2>
+<div class="products">
+<div class="product">
+<div class="emoji">🥔</div>
+<h3>Potato</h3><p>₹30 / Kg</p>
+<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
+</div>
+<div class="product">
+<div class="emoji">🍅</div>
+<h3>Tomato</h3><p>₹40 / Kg</p>
+<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
+</div>
+<div class="product">
+<div class="emoji">🥛</div>
+<h3>Milk</h3><p>₹30 / Pack</p>
+<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
+</div>
+<div class="product">
+<div class="emoji">🍚</div>
+<h3>Rice</h3><p>₹50 / Kg</p>
+<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
+</div>
+</div>
+</section>
+
+<section id="about">
+<h2>About MANJESH MART</h2>
+<p>आपका भरोसेमंद ऑनलाइन Grocery Shopping प्लेटफॉर्म।</p>
+</section>
+
+<footer id="contact">
+<h3>MANJESH MART</h3>
+<p>Useful Products. Easy Shopping.</p>
+<p>© 2026 MANJESH MART. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
