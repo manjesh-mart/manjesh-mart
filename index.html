@@ -4,116 +4,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#147d45">
-<title>MANJESH MART | Online Grocery Shopping</title>
+<title>MANJESH MART - Grocery Delivery</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f7faf7;color:#222}
-header{background:#147d45;color:white;padding:18px 5%;
-display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.logo{font-size:23px;font-weight:bold}
-.logo span{color:#ff8700}
-header a{color:white;text-decoration:none;font-weight:bold}
-nav{background:white;padding:15px 5%;display:flex;gap:22px;
-overflow-x:auto;white-space:nowrap;box-shadow:0 2px 5px #ddd}
-nav a{color:#147d45;text-decoration:none;font-weight:bold}
-.hero{margin:22px auto;background:#e5f4e9;padding:35px 7%;
-border-radius:15px;width:90%;display:flex;align-items:center;
-justify-content:space-between;gap:20px;flex-wrap:wrap}
-.hero h1{font-size:32px;color:#105c35;margin-bottom:12px}
-.hero p{line-height:1.7}
-.hero button{background:#ff8700;color:white;border:0;padding:13px 22px;
-border-radius:8px;margin-top:18px;font-weight:bold}
-section{padding:20px 5%}
-h2{color:#105c35;margin-bottom:18px}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:15px}
-.category,.product{background:white;border-radius:12px;padding:18px 10px;
-text-align:center;box-shadow:0 2px 9px #ddd}
-.category{font-weight:bold}
-.category div{font-size:35px;margin-bottom:8px}
-.product .emoji{font-size:45px}
-.product h3{font-size:15px;margin:10px 0}
-.product p{color:#147d45;font-weight:bold;margin:8px}
-.product button{background:#147d45;color:white;border:0;padding:9px 14px;
-border-radius:6px}
-footer{background:#105c35;color:white;text-align:center;padding:25px;margin-top:30px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f7f5;color:#222;padding-bottom:85px}
+header{background:#147d45;color:white;padding:17px 15px}
+.brand{font-size:24px;font-weight:bold}
+.tagline{font-size:12px;margin-top:4px}
+.location{font-size:13px;margin-top:12px}
+.search{width:100%;padding:13px;border:0;border-radius:10px;margin-top:13px;font-size:15px}
+.container{padding:16px}
+.heading{font-size:19px;font-weight:bold;margin:17px 0 12px}
+.categories{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
+.cat{border:1px solid #ddd;background:white;padding:11px 15px;border-radius:22px;white-space:nowrap}
+.cat.active{background:#147d45;color:white;border-color:#147d45}
+.banner{background:linear-gradient(120deg,#105c35,#20985a);color:white;padding:23px;border-radius:15px;margin-top:15px}
+.banner h2{font-size:21px;margin-bottom:8px}
+.banner p{font-size:13px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.product{background:white;border-radius:13px;padding:12px;box-shadow:0 2px 8px #0000000c}
+.product .emoji{font-size:43px;text-align:center;background:#f1f8f2;border-radius:10px;padding:15px}
+.product h3{font-size:15px;margin-top:10px}
+.product p{font-size:12px;color:#777;margin:5px 0}
+.price{font-weight:bold;color:#147d45;margin:9px 0}
+.add{width:100%;padding:10px;background:#147d45;color:white;border:0;border-radius:8px;font-weight:bold}
+.bottom{position:fixed;bottom:0;left:0;width:100%;background:white;box-shadow:0 -2px 12px #0002;display:flex;justify-content:space-around;padding:13px 5px;z-index:5}
+.bottom button{border:0;background:none;font-size:13px;color:#147d45}
+.cartbox{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:flex-end}
+.cartpanel{background:white;width:100%;max-height:85vh;overflow:auto;border-radius:20px 20px 0 0;padding:20px}
+.carthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.close{border:0;background:#eee;border-radius:50%;padding:8px}
+.cartitem{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:13px 0;gap:8px}
+.qty button{padding:5px 10px;border:0;background:#eaf6ee;border-radius:5px}
+.total{display:flex;justify-content:space-between;margin-top:15px;font-size:18px;font-weight:bold}
+.checkout{width:100%;padding:14px;background:#ff8700;color:white;border:0;border-radius:10px;font-size:16px;font-weight:bold;margin-top:18px}
+.empty{text-align:center;padding:35px;color:#777}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">MANJESH <span>MART</span></div>
-<a href="#products">🛒 Shopping</a>
+  <div class="brand">🛒 MANJESH MART</div>
+  <div class="tagline">Useful Grocery. Easy Delivery.</div>
+  <div class="location">📍 Delivery Area: Sikta & Nearby Areas</div>
+  <input class="search" id="search" placeholder="🔍 Search grocery products..." oninput="renderProducts()">
 </header>
 
-<nav>
-<a href="#">Home</a>
-<a href="#categories">Categories</a>
-<a href="#products">Products</a>
-<a href="#about">About Us</a>
-<a href="#contact">Contact</a>
-</nav>
+<div class="container">
+  <div class="banner">
+    <h2>Daily Needs, At Your Door!</h2>
+    <p>Grocery aur daily essentials ab aasani se order karein.</p>
+  </div>
 
-<div class="hero">
-<div>
-<h1>आपकी जरूरत, अब आपके दरवाजे पर!</h1>
-<p>ताजा सब्जियां, राशन और रोजमर्रा का सामान।<br>
-अब ऑनलाइन ऑर्डर करें।</p>
-<button onclick="document.getElementById('products').scrollIntoView()">
-Shop Now →
-</button>
-</div>
-<div style="font-size:75px">🛒🥦</div>
+  <div class="heading">Shop by Category</div>
+  <div class="categories" id="categories">
+    <button class="cat active" onclick="setCategory('All',this)">All</button>
+    <button class="cat" onclick="setCategory('Grocery',this)">🌾 Grocery</button>
+    <button class="cat" onclick="setCategory('Vegetables',this)">🥦 Vegetables</button>
+    <button class="cat" onclick="setCategory('Dairy',this)">🥛 Dairy</button>
+    <button class="cat" onclick="setCategory('Snacks',this)">🍪 Snacks</button>
+  </div>
+
+  <div class="heading">Popular Products</div>
+  <div class="products" id="products"></div>
 </div>
 
-<section id="categories">
-<h2>Shop By Category</h2>
-<div class="categories">
-<div class="category"><div>🥦</div>Vegetables</div>
-<div class="category"><div>🍎</div>Fruits</div>
-<div class="category"><div>🥛</div>Dairy</div>
-<div class="category"><div>🌾</div>Grocery</div>
-<div class="category"><div>🥚</div>Eggs</div>
-<div class="category"><div>🥤</div>Drinks</div>
+<div class="bottom">
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 Home</button>
+  <button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">📂 Categories</button>
+  <button onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
 </div>
-</section>
 
-<section id="products">
-<h2>Popular Products</h2>
-<div class="products">
-<div class="product">
-<div class="emoji">🥔</div>
-<h3>Potato</h3><p>₹30 / Kg</p>
-<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
+<div class="cartbox" id="cartbox" onclick="if(event.target===this)closeCart()">
+  <div class="cartpanel">
+    <div class="carthead">
+      <h2>🛒 Your Cart</h2>
+      <button class="close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div id="cartSummary"></div>
+  </div>
 </div>
-<div class="product">
-<div class="emoji">🍅</div>
-<h3>Tomato</h3><p>₹40 / Kg</p>
-<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
-</div>
-<div class="product">
-<div class="emoji">🥛</div>
-<h3>Milk</h3><p>₹30 / Pack</p>
-<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
-</div>
-<div class="product">
-<div class="emoji">🍚</div>
-<h3>Rice</h3><p>₹50 / Kg</p>
-<button onclick="alert('Product feature coming soon!')">Add to Cart</button>
-</div>
-</div>
-</section>
 
-<section id="about">
-<h2>About MANJESH MART</h2>
-<p>आपका भरोसेमंद ऑनलाइन Grocery Shopping प्लेटफॉर्म।</p>
-</section>
+<script>
+const products = [
+ {id:1,name:"Rice",unit:"1 kg",price:55,emoji:"🍚",category:"Grocery"},
+ {id:2,name:"Wheat Flour",unit:"1 kg",price:35,emoji:"🌾",category:"Grocery"},
+ {id:3,name:"Potato",unit:"1 kg",price:25,emoji:"🥔",category:"Vegetables"},
+ {id:4,name:"Onion",unit:"1 kg",price:35,emoji:"🧅",category:"Vegetables"},
+ {id:5,name:"Milk",unit:"500 ml",price:30,emoji:"🥛",category:"Dairy"},
+ {id:6,name:"Eggs",unit:"6 pieces",price:45,emoji:"🥚",category:"Dairy"},
+ {id:7,name:"Biscuits",unit:"1 pack",price:10,emoji:"🍪",category:"Snacks"},
+ {id:8,name:"Cooking Oil",unit:"1 litre",price:140,emoji:"🫗",category:"Grocery"}
+];
 
-<footer id="contact">
-<h3>MANJESH MART</h3>
-<p>Useful Products. Easy Shopping.</p>
-<p>© 2026 MANJESH MART. All Rights Reserved.</p>
-</footer>
+let cart = JSON.parse(localStorage.getItem("manjeshCart") || "{}");
+let activeCategory = "All";
 
+function saveCart(){
+ localStorage.setItem("manjeshCart",JSON.stringify(cart));
+ updateCartCount();
+}
+
+function setCategory(category,button){
+ activeCategory=category;
+ document.querySelectorAll(".cat").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderProducts();
+}
+
+function renderProducts(){
+ const search=document.getElementById("search").value.toLowerCase();
+ const filtered=products.filter(p=>
+ (activeCategory==="All" || p.category===activeCategory) &&
+ p.name.toLowerCase().includes(search)
+ );
+ document.getElementById("products").innerHTML=filtered.map(p=>`
+ <div class="product">
+  <div class="emoji">${p.emoji}</div>
+  <h3>${p.name}</h3>
+  <p>${p.unit}</p>
+  <div class="price">₹${p.price}</div>
+  <button class="add" onclick="addToCart(${p.id})">+ Add to Cart</button>
+ </div>`).join("") || "<p>No products found.</p>";
+}
+
+function addToCart(id){
+ cart[id]=(cart[id]||0)+1;
+ saveCart();
+}
+
+function changeQty(id,change){
+ cart[id]=(cart[id]||0)+change;
+ if(cart[id]<=0) delete cart[id];
+ saveCart();
+ renderCart();
+}
+
+function updateCartCount(){
+ const count=Object.values(cart).reduce((a,b)=>a+b,0);
+ document.getElementById("cartCount").innerText=count;
+}
+
+function openCart(){
+ renderCart();
+ document.getElementById("cartbox").style.display="flex";
+}
+function closeCart(){
+ document.getElementById("cartbox").style.display="none";
+}
+
+function renderCart(){
+ const items=Object.entries(cart);
+ const container=document.getElementById("cartItems");
+ const summary=document.getElementById("cartSummary");
+
+ if(!items.length){
+  container.innerHTML='<div class="empty">🛒<h3>Your cart is empty</h3><p>Add some grocery products first.</p></div>';
+  summary.innerHTML="";
+  return;
+ }
+
+ let subtotal=0;
+ container.innerHTML=items.map(([id,qty])=>{
+  const p=products.find(x=>x.id==id);
+  if(!p)return "";
+  subtotal+=p.price*qty;
+  return `<div class="cartitem">
+   <div><b>${p.emoji} ${p.name}</b><br><small>₹${p.price} × ${qty}</small></div>
+   <div class="qty">
+    <button onclick="changeQty(${p.id},-1)">−</button>
+    <b>${qty}</b>
+    <button onclick="changeQty(${p.id},1)">+</button>
+   </div>
+  </div>`;
+ }).join("");
+
+ const delivery=subtotal>=149?0:20;
+ summary.innerHTML=`
+ <div class="total"><span>Subtotal</span><span>₹${subtotal}</span></div>
+ <div class="total" style="font-size:14px"><span>Delivery Charge</span><span>${delivery===0?"FREE":"₹"+delivery}</span></div>
+ <div class="total"><span>Total</span><span>₹${subtotal+delivery}</span></div>
+ <button class="checkout" onclick="checkout()">Continue to Checkout</button>
+ <p style="font-size:11px;color:#777;margin-top:10px">Demo checkout: orders are not yet submitted to the store.</p>`;
+}
+
+function checkout(){
+ alert("Cart system ready! Next step: Customer details and real order submission.");
+}
+
+renderProducts();
+updateCartCount();
+</script>
 </body>
 </html>
