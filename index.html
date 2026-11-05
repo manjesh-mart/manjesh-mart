@@ -3,198 +3,281 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MANJESH MART - Grocery Delivery</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#126b3b">
+<title>MANJESH MART | Online Grocery Store</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f7f5;color:#222;padding-bottom:85px}
-header{background:#147d45;color:white;padding:17px 15px}
-.brand{font-size:24px;font-weight:bold}
-.tagline{font-size:12px;margin-top:4px}
-.location{font-size:13px;margin-top:12px}
-.search{width:100%;padding:13px;border:0;border-radius:10px;margin-top:13px;font-size:15px}
-.container{padding:16px}
-.heading{font-size:19px;font-weight:bold;margin:17px 0 12px}
-.categories{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
-.cat{border:1px solid #ddd;background:white;padding:11px 15px;border-radius:22px;white-space:nowrap}
-.cat.active{background:#147d45;color:white;border-color:#147d45}
-.banner{background:linear-gradient(120deg,#105c35,#20985a);color:white;padding:23px;border-radius:15px;margin-top:15px}
-.banner h2{font-size:21px;margin-bottom:8px}
-.banner p{font-size:13px}
+body{font-family:Arial,sans-serif;background:#f5f7f5;color:#202820;padding-bottom:75px}
+header{background:#126b3b;color:white;padding:17px 16px 20px;position:sticky;top:0;z-index:4}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#ff982b}
+.location{font-size:12px;margin-top:12px}
+.search{width:100%;margin-top:14px;padding:14px;border:0;border-radius:11px;font-size:14px}
+.container{padding:15px;max-width:1000px;margin:auto}
+.banner{background:linear-gradient(120deg,#104d30,#239653);color:white;border-radius:18px;padding:24px 19px}
+.banner h2{font-size:24px;max-width:260px;line-height:1.3}
+.banner p{font-size:13px;margin-top:9px;line-height:1.5}
+.offer{display:inline-block;background:#ff982b;color:#222;padding:8px 12px;border-radius:20px;font-size:11px;font-weight:bold;margin-top:14px}
+.section{display:flex;justify-content:space-between;align-items:center;margin:23px 0 13px}
+.section h3{font-size:18px}
+.section small{color:#168049}
+.categories{display:flex;gap:9px;overflow-x:auto;padding-bottom:6px}
+.cat{border:1px solid #e1e8e1;background:white;padding:11px 15px;border-radius:22px;white-space:nowrap;font-size:13px}
+.cat.active{background:#126b3b;color:white;border-color:#126b3b}
 .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.product{background:white;border-radius:13px;padding:12px;box-shadow:0 2px 8px #0000000c}
-.product .emoji{font-size:43px;text-align:center;background:#f1f8f2;border-radius:10px;padding:15px}
-.product h3{font-size:15px;margin-top:10px}
-.product p{font-size:12px;color:#777;margin:5px 0}
-.price{font-weight:bold;color:#147d45;margin:9px 0}
-.add{width:100%;padding:10px;background:#147d45;color:white;border:0;border-radius:8px;font-weight:bold}
-.bottom{position:fixed;bottom:0;left:0;width:100%;background:white;box-shadow:0 -2px 12px #0002;display:flex;justify-content:space-around;padding:13px 5px;z-index:5}
-.bottom button{border:0;background:none;font-size:13px;color:#147d45}
-.cartbox{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:flex-end}
-.cartpanel{background:white;width:100%;max-height:85vh;overflow:auto;border-radius:20px 20px 0 0;padding:20px}
-.carthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.close{border:0;background:#eee;border-radius:50%;padding:8px}
-.cartitem{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:13px 0;gap:8px}
-.qty button{padding:5px 10px;border:0;background:#eaf6ee;border-radius:5px}
-.total{display:flex;justify-content:space-between;margin-top:15px;font-size:18px;font-weight:bold}
-.checkout{width:100%;padding:14px;background:#ff8700;color:white;border:0;border-radius:10px;font-size:16px;font-weight:bold;margin-top:18px}
-.empty{text-align:center;padding:35px;color:#777}
+.product{background:white;border-radius:14px;padding:10px;box-shadow:0 3px 12px #183c2010;border:1px solid #edf0ed}
+.photo{height:100px;background:#f0f7f1;border-radius:11px;display:grid;place-items:center;font-size:47px}
+.product h4{font-size:14px;margin-top:10px;min-height:32px}
+.unit{font-size:11px;color:#858d85;margin-top:4px}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:11px;gap:5px}
+.price{font-size:15px;font-weight:bold;color:#126b3b}
+.add{border:0;background:#e8f5eb;color:#126b3b;font-weight:bold;padding:9px 11px;border-radius:8px}
+.bottom{position:fixed;bottom:0;left:0;width:100%;height:65px;background:white;box-shadow:0 -3px 15px #0002;display:flex;justify-content:space-around;align-items:center;z-index:5}
+.bottom button{background:none;border:0;color:#536258;font-size:12px}
+.bottom b{display:block;font-size:19px;margin-bottom:3px}
+.bottom .selected{color:#126b3b;font-weight:bold}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:flex-end;justify-content:center}
+.panel{background:white;width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:20px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}
+.panel-head h2{font-size:20px}
+.close{border:0;background:#eee;border-radius:50%;width:34px;height:34px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #eee;gap:8px}
+.qty{display:flex;align-items:center;gap:9px}
+.qty button{border:0;background:#e8f5eb;color:#126b3b;padding:7px 11px;border-radius:7px;font-size:16px}
+.summary{margin-top:15px;background:#f5f8f5;padding:15px;border-radius:12px}
+.line{display:flex;justify-content:space-between;margin:10px 0;font-size:14px}
+.grand{font-size:18px;font-weight:bold;border-top:1px solid #ddd;padding-top:12px}
+.primary{width:100%;padding:15px;border:0;border-radius:11px;background:#ff8b19;color:white;font-size:16px;font-weight:bold;margin-top:16px}
+.empty{text-align:center;padding:35px 10px;color:#788078}
+label{font-size:13px;font-weight:bold;display:block;margin:14px 0 7px}
+input,textarea,select{width:100%;border:1px solid #dce4dc;border-radius:10px;padding:13px;font-size:14px;background:white}
+textarea{resize:vertical;min-height:70px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:12px;color:#7a847a;line-height:1.5;margin-top:12px}
+.address-title{font-size:15px;font-weight:bold;margin-top:18px;color:#126b3b}
+.success{text-align:center;padding:25px 5px;display:none}
+@media(min-width:650px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}.banner{padding:35px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand">🛒 MANJESH MART</div>
-  <div class="tagline">Useful Grocery. Easy Delivery.</div>
-  <div class="location">📍 Delivery Area: Sikta & Nearby Areas</div>
-  <input class="search" id="search" placeholder="🔍 Search grocery products..." oninput="renderProducts()">
+ <div class="top">
+  <div class="logo">MANJESH <span>MART</span></div>
+  <div>🛒 <b id="headCount">0</b></div>
+ </div>
+ <div class="location">📍 Grocery Delivery | Sikta & Nearby Areas</div>
+ <input class="search" id="search" placeholder="Search 100+ daily essentials..." oninput="renderProducts()">
 </header>
 
-<div class="container">
-  <div class="banner">
-    <h2>Daily Needs, At Your Door!</h2>
-    <p>Grocery aur daily essentials ab aasani se order karein.</p>
-  </div>
+<main class="container">
+ <section class="banner">
+  <h2>Everything You Need, Every Day!</h2>
+  <p>Grocery, vegetables, fruits and daily essentials at one place.</p>
+  <div class="offer">WELCOME TO MANJESH MART</div>
+ </section>
 
-  <div class="heading">Shop by Category</div>
-  <div class="categories" id="categories">
-    <button class="cat active" onclick="setCategory('All',this)">All</button>
-    <button class="cat" onclick="setCategory('Grocery',this)">🌾 Grocery</button>
-    <button class="cat" onclick="setCategory('Vegetables',this)">🥦 Vegetables</button>
-    <button class="cat" onclick="setCategory('Dairy',this)">🥛 Dairy</button>
-    <button class="cat" onclick="setCategory('Snacks',this)">🍪 Snacks</button>
-  </div>
+ <div class="section"><h3>Shop by Category</h3><small id="productCount">100 Products</small></div>
+ <div class="categories" id="categories"></div>
 
-  <div class="heading">Popular Products</div>
-  <div class="products" id="products"></div>
+ <div class="section"><h3 id="productHeading">All Products</h3><small>Daily Essentials</small></div>
+ <div class="products" id="products"></div>
+</main>
+
+<nav class="bottom">
+ <button class="selected" onclick="window.scrollTo({top:0,behavior:'smooth'})"><b>⌂</b>Home</button>
+ <button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})"><b>▦</b>Categories</button>
+ <button onclick="openCart()"><b>🛒</b>Cart <span id="navCount">0</span></button>
+</nav>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closePanel('cartOverlay')">
+ <div class="panel">
+  <div class="panel-head"><h2>🛒 My Cart</h2><button class="close" onclick="closePanel('cartOverlay')">✕</button></div>
+  <div id="cartItems"></div>
+  <div id="cartSummary"></div>
+ </div>
 </div>
 
-<div class="bottom">
-  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 Home</button>
-  <button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">📂 Categories</button>
-  <button onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
-</div>
+<div class="overlay" id="checkoutOverlay" onclick="if(event.target===this)closePanel('checkoutOverlay')">
+ <div class="panel">
+  <div class="panel-head"><h2>📍 Delivery Address</h2><button class="close" onclick="closePanel('checkoutOverlay')">✕</button></div>
+  <div id="checkoutForm">
+   <p class="note">अपना सही पता भरें ताकि आपका सामान सही जगह पहुँच सके।</p>
+   <form id="orderForm">
+    <div class="address-title">Customer Details</div>
+    <label>Full Name *</label>
+    <input name="name" placeholder="आपका पूरा नाम" required>
+    <label>Mobile Number *</label>
+    <input name="phone" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर" required>
 
-<div class="cartbox" id="cartbox" onclick="if(event.target===this)closeCart()">
-  <div class="cartpanel">
-    <div class="carthead">
-      <h2>🛒 Your Cart</h2>
-      <button class="close" onclick="closeCart()">✕</button>
+    <div class="address-title">Delivery Address</div>
+    <label>House No. / Street / Full Address *</label>
+    <textarea name="address" placeholder="मकान नंबर, गली, मोहल्ला..." required></textarea>
+
+    <div class="form-grid">
+     <div><label>Village / Town *</label><input name="village" placeholder="गाँव / शहर" required></div>
+     <div><label>Block / Area *</label><input name="area" placeholder="ब्लॉक / एरिया" required></div>
     </div>
-    <div id="cartItems"></div>
-    <div id="cartSummary"></div>
+    <div class="form-grid">
+     <div><label>PIN Code *</label><input name="pin" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6 अंकों का PIN" required></div>
+     <div><label>Landmark</label><input name="landmark" placeholder="नजदीकी पहचान"></div>
+    </div>
+    <label>Delivery Instructions</label>
+    <textarea name="instructions" placeholder="कोई विशेष निर्देश (वैकल्पिक)"></textarea>
+
+    <div class="address-title">Payment Method</div>
+    <select name="payment"><option>Cash on Delivery</option></select>
+    <div class="summary" id="checkoutSummary"></div>
+    <button class="primary" type="submit">Place Order</button>
+    <p class="note">Demo checkout: अभी ऑर्डर दुकान तक नहीं भेजा जाएगा।</p>
+   </form>
   </div>
+  <div class="success" id="success">
+   <div style="font-size:55px">✅</div>
+   <h2>Details Submitted!</h2>
+   <p class="note">यह केवल Demo है। वास्तविक ऑर्डर भेजने की सुविधा अगले चरण में जोड़ी जाएगी।</p>
+   <button class="primary" onclick="closePanel('checkoutOverlay')">Continue Shopping</button>
+  </div>
+ </div>
 </div>
 
 <script>
-const products = [
- {id:1,name:"Rice",unit:"1 kg",price:55,emoji:"🍚",category:"Grocery"},
- {id:2,name:"Wheat Flour",unit:"1 kg",price:35,emoji:"🌾",category:"Grocery"},
- {id:3,name:"Potato",unit:"1 kg",price:25,emoji:"🥔",category:"Vegetables"},
- {id:4,name:"Onion",unit:"1 kg",price:35,emoji:"🧅",category:"Vegetables"},
- {id:5,name:"Milk",unit:"500 ml",price:30,emoji:"🥛",category:"Dairy"},
- {id:6,name:"Eggs",unit:"6 pieces",price:45,emoji:"🥚",category:"Dairy"},
- {id:7,name:"Biscuits",unit:"1 pack",price:10,emoji:"🍪",category:"Snacks"},
- {id:8,name:"Cooking Oil",unit:"1 litre",price:140,emoji:"🫗",category:"Grocery"}
+// 100 DEMO PRODUCTS — prices in INR
+const groups = [
+["Grocery","🌾",[
+["Rice","1 kg",55,"🍚"],["Wheat Flour","1 kg",35,"🌾"],["Basmati Rice","1 kg",90,"🍚"],["Sugar","1 kg",45,"🧂"],["Salt","1 kg",22,"🧂"],["Toor Dal","1 kg",145,"🫘"],["Moong Dal","1 kg",115,"🫘"],["Masoor Dal","1 kg",95,"🫘"],["Chana Dal","1 kg",85,"🫘"],["Urad Dal","1 kg",125,"🫘"],["Mustard Oil","1 litre",160,"🫗"],["Refined Oil","1 litre",145,"🫗"],["Ghee","500 ml",290,"🧈"],["Besan","1 kg",90,"🌾"],["Poha","500 g",35,"🥣"]
+]],
+["Vegetables","🥦",[
+["Potato","1 kg",25,"🥔"],["Onion","1 kg",35,"🧅"],["Tomato","1 kg",30,"🍅"],["Cauliflower","1 piece",35,"🥦"],["Cabbage","1 piece",30,"🥬"],["Brinjal","1 kg",35,"🍆"],["Lady Finger","500 g",30,"🥬"],["Green Chilli","100 g",12,"🌶️"],["Ginger","250 g",25,"🫚"],["Garlic","250 g",35,"🧄"],["Carrot","500 g",30,"🥕"],["Cucumber","500 g",25,"🥒"],["Pumpkin","1 kg",30,"🎃"],["Spinach","1 bunch",20,"🥬"],["Lemon","4 pieces",20,"🍋"]
+]],
+["Fruits","🍎",[
+["Apple","1 kg",140,"🍎"],["Banana","1 dozen",50,"🍌"],["Orange","1 kg",80,"🍊"],["Mango","1 kg",90,"🥭"],["Papaya","1 piece",40,"🍈"],["Guava","1 kg",60,"🍐"],["Grapes","500 g",60,"🍇"],["Pomegranate","1 kg",160,"🍎"],["Watermelon","1 kg",30,"🍉"],["Coconut","1 piece",40,"🥥"],["Pineapple","1 piece",55,"🍍"],["Sweet Lime","1 kg",70,"🍊"]
+]],
+["Dairy","🥛",[
+["Milk","500 ml",30,"🥛"],["Curd","400 g",35,"🥣"],["Paneer","200 g",80,"🧀"],["Butter","100 g",60,"🧈"],["Cheese","200 g",120,"🧀"],["Eggs","6 pieces",45,"🥚"],["Lassi","200 ml",20,"🥛"],["Buttermilk","500 ml",25,"🥛"],["Cream","250 ml",65,"🥛"],["Flavoured Milk","200 ml",30,"🥤"],["Khoya","250 g",90,"🥛"],["Milk Powder","200 g",115,"🥛"]
+]],
+["Snacks","🍪",[
+["Biscuits","1 pack",10,"🍪"],["Namkeen","200 g",35,"🥨"],["Potato Chips","1 pack",20,"🍟"],["Noodles","1 pack",15,"🍜"],["Pasta","500 g",55,"🍝"],["Popcorn","1 pack",25,"🍿"],["Rusk","200 g",35,"🍞"],["Cookies","1 pack",40,"🍪"],["Peanuts","250 g",40,"🥜"],["Chana","250 g",35,"🫘"],["Chocolate","1 piece",20,"🍫"],["Toffee Pack","1 pack",30,"🍬"]
+]],
+["Beverages","🥤",[
+["Packaged Water","1 litre",20,"💧"],["Cold Drink","750 ml",40,"🥤"],["Fruit Juice","1 litre",100,"🧃"],["Tea","250 g",120,"🍵"],["Coffee","100 g",90,"☕"],["Green Tea","25 bags",110,"🍵"],["Sharbat","750 ml",80,"🥤"],["Energy Drink","250 ml",50,"🥤"],["Coconut Water","200 ml",35,"🥥"],["Glucose Powder","500 g",90,"🥛"]
+]],
+["Personal Care","🧴",[
+["Bath Soap","1 piece",35,"🧼"],["Shampoo","180 ml",110,"🧴"],["Toothpaste","100 g",65,"🪥"],["Toothbrush","1 piece",25,"🪥"],["Hair Oil","100 ml",55,"🧴"],["Face Wash","100 ml",120,"🧴"],["Body Lotion","200 ml",140,"🧴"],["Handwash","200 ml",65,"🧼"],["Comb","1 piece",20,"💇"],["Shaving Cream","1 pack",60,"🪒"],["Sanitary Pads","1 pack",75,"🩷"],["Talcum Powder","100 g",65,"🧴"]
+]],
+["Household","🧹",[
+["Detergent Powder","1 kg",90,"🫧"],["Dishwash Bar","1 piece",15,"🧽"],["Dishwash Liquid","500 ml",75,"🧴"],["Toilet Cleaner","500 ml",95,"🧴"],["Floor Cleaner","1 litre",110,"🧹"],["Phenyl","1 litre",65,"🧴"],["Scrub Pad","1 piece",10,"🧽"],["Garbage Bags","1 pack",45,"🗑️"],["Tissue Paper","1 pack",35,"🧻"],["Mosquito Coil","1 pack",35,"🦟"],["Matchbox","1 pack",10,"🔥"],["Garbage Bin","1 piece",120,"🗑️"]
+]]
 ];
 
-let cart = JSON.parse(localStorage.getItem("manjeshCart") || "{}");
-let activeCategory = "All";
+let products=[];
+let id=1;
+groups.forEach(g=>g[2].forEach(p=>{
+ products.push({id:id++,category:g[0],emoji:p[3],name:p[0],unit:p[1],price:p[2]});
+}));
 
-function saveCart(){
- localStorage.setItem("manjeshCart",JSON.stringify(cart));
- updateCartCount();
+let cart=JSON.parse(localStorage.getItem("mmCart")||"{}");
+let active="All";
+
+function makeCategories(){
+ let html=`<button class="cat active" onclick="setCat('All',this)">All</button>`;
+ groups.forEach(g=>{
+  html+=`<button class="cat" onclick="setCat('${g[0]}',this)">${g[1]} ${g[0]}</button>`;
+ });
+ document.getElementById("categories").innerHTML=html;
 }
-
-function setCategory(category,button){
- activeCategory=category;
- document.querySelectorAll(".cat").forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
+function setCat(c,b){
+ active=c;
+ document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+ b.classList.add("active");
+ document.getElementById("productHeading").textContent=c==="All"?"All Products":c;
  renderProducts();
 }
-
 function renderProducts(){
- const search=document.getElementById("search").value.toLowerCase();
- const filtered=products.filter(p=>
- (activeCategory==="All" || p.category===activeCategory) &&
- p.name.toLowerCase().includes(search)
- );
- document.getElementById("products").innerHTML=filtered.map(p=>`
- <div class="product">
-  <div class="emoji">${p.emoji}</div>
-  <h3>${p.name}</h3>
-  <p>${p.unit}</p>
-  <div class="price">₹${p.price}</div>
-  <button class="add" onclick="addToCart(${p.id})">+ Add to Cart</button>
- </div>`).join("") || "<p>No products found.</p>";
+ let q=document.getElementById("search").value.toLowerCase();
+ let list=products.filter(p=>(active==="All"||p.category===active)&&p.name.toLowerCase().includes(q));
+ document.getElementById("productCount").textContent=list.length+" Products";
+ document.getElementById("products").innerHTML=list.map(p=>`
+ <article class="product">
+  <div class="photo">${p.emoji}</div>
+  <h4>${p.name}</h4>
+  <div class="unit">${p.unit} • ${p.category}</div>
+  <div class="price-row"><span class="price">₹${p.price}</span>
+  <button class="add" onclick="add(${p.id})">+ ADD</button></div>
+ </article>`).join("")||"<p>No products found.</p>";
 }
-
-function addToCart(id){
- cart[id]=(cart[id]||0)+1;
- saveCart();
+function save(){
+ localStorage.setItem("mmCart",JSON.stringify(cart));
+ let n=Object.values(cart).reduce((a,b)=>a+b,0);
+ document.getElementById("headCount").textContent=n;
+ document.getElementById("navCount").textContent=n;
 }
-
-function changeQty(id,change){
- cart[id]=(cart[id]||0)+change;
- if(cart[id]<=0) delete cart[id];
- saveCart();
- renderCart();
+function add(id){cart[id]=(cart[id]||0)+1;save();}
+function change(id,d){
+ cart[id]=(cart[id]||0)+d;
+ if(cart[id]<=0)delete cart[id];
+ save();renderCart();
 }
-
-function updateCartCount(){
- const count=Object.values(cart).reduce((a,b)=>a+b,0);
- document.getElementById("cartCount").innerText=count;
+function totals(){
+ let sub=products.reduce((s,p)=>s+p.price*(cart[p.id]||0),0);
+ let delivery=sub===0?0:(sub>=149?0:20);
+ return {sub,delivery,total:sub+delivery};
 }
-
-function openCart(){
- renderCart();
- document.getElementById("cartbox").style.display="flex";
-}
-function closeCart(){
- document.getElementById("cartbox").style.display="none";
-}
-
+function openCart(){renderCart();document.getElementById("cartOverlay").style.display="flex";}
+function closePanel(id){document.getElementById(id).style.display="none";}
 function renderCart(){
- const items=Object.entries(cart);
- const container=document.getElementById("cartItems");
- const summary=document.getElementById("cartSummary");
-
- if(!items.length){
-  container.innerHTML='<div class="empty">🛒<h3>Your cart is empty</h3><p>Add some grocery products first.</p></div>';
-  summary.innerHTML="";
+ let list=products.filter(p=>cart[p.id]);
+ if(!list.length){
+  document.getElementById("cartItems").innerHTML='<div class="empty"><div style="font-size:45px">🛒</div><h3>Your cart is empty</h3><p>Add products to continue shopping.</p></div>';
+  document.getElementById("cartSummary").innerHTML="";
   return;
  }
-
- let subtotal=0;
- container.innerHTML=items.map(([id,qty])=>{
-  const p=products.find(x=>x.id==id);
-  if(!p)return "";
-  subtotal+=p.price*qty;
-  return `<div class="cartitem">
-   <div><b>${p.emoji} ${p.name}</b><br><small>₹${p.price} × ${qty}</small></div>
-   <div class="qty">
-    <button onclick="changeQty(${p.id},-1)">−</button>
-    <b>${qty}</b>
-    <button onclick="changeQty(${p.id},1)">+</button>
-   </div>
-  </div>`;
- }).join("");
-
- const delivery=subtotal>=149?0:20;
- summary.innerHTML=`
- <div class="total"><span>Subtotal</span><span>₹${subtotal}</span></div>
- <div class="total" style="font-size:14px"><span>Delivery Charge</span><span>${delivery===0?"FREE":"₹"+delivery}</span></div>
- <div class="total"><span>Total</span><span>₹${subtotal+delivery}</span></div>
- <button class="checkout" onclick="checkout()">Continue to Checkout</button>
- <p style="font-size:11px;color:#777;margin-top:10px">Demo checkout: orders are not yet submitted to the store.</p>`;
+ document.getElementById("cartItems").innerHTML=list.map(p=>`
+ <div class="cart-item">
+  <div><b>${p.emoji} ${p.name}</b><p class="unit">₹${p.price} / ${p.unit}</p></div>
+  <div class="qty"><button onclick="change(${p.id},-1)">−</button><b>${cart[p.id]}</b><button onclick="change(${p.id},1)">+</button></div>
+ </div>`).join("");
+ let t=totals();
+ document.getElementById("cartSummary").innerHTML=`
+ <div class="summary">
+ <div class="line"><span>Subtotal</span><b>₹${t.sub}</b></div>
+ <div class="line"><span>Delivery Charge</span><b>${t.delivery===0?"FREE":"₹"+t.delivery}</b></div>
+ <div class="line grand"><span>Total</span><span>₹${t.total}</span></div>
+ </div><button class="primary" onclick="goCheckout()">Proceed to Checkout →</button>`;
 }
-
-function checkout(){
- alert("Cart system ready! Next step: Customer details and real order submission.");
+function goCheckout(){
+ let t=totals();
+ document.getElementById("checkoutSummary").innerHTML=`
+ <div class="line"><span>Items Total</span><b>₹${t.sub}</b></div>
+ <div class="line"><span>Delivery</span><b>${t.delivery===0?"FREE":"₹"+t.delivery}</b></div>
+ <div class="line grand"><span>Payable Amount</span><b>₹${t.total}</b></div>`;
+ closePanel("cartOverlay");
+ document.getElementById("checkoutForm").style.display="block";
+ document.getElementById("success").style.display="none";
+ document.getElementById("checkoutOverlay").style.display="flex";
 }
-
+document.getElementById("orderForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ if(!this.reportValidity())return;
+ const customer=Object.fromEntries(new FormData(this).entries());
+ const order={
+  customer,
+  items:products.filter(p=>cart[p.id]).map(p=>({...p,quantity:cart[p.id]})),
+  bill:totals(),
+  createdAt:new Date().toISOString()
+ };
+ // Demo only: saved locally on this customer's device.
+ localStorage.setItem("mmLastDemoOrder",JSON.stringify(order));
+ cart={};save();
+ this.reset();
+ document.getElementById("checkoutForm").style.display="none";
+ document.getElementById("success").style.display="block";
+});
+makeCategories();
 renderProducts();
-updateCartCount();
+save();
 </script>
 </body>
 </html>
